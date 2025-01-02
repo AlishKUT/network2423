@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Networking Protocols and Practical Tasks</title>
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="title-bar">
+    <span>Network Protocols</span>
+    <div class="title-bar-controls">
+      <button class="title-bar-button">_</button>
+      <button class="title-bar-button">□</button>
+      <button class="title-bar-button" onclick="window.close()">×</button>
+    </div>
+  </div>
+
+  <h1>Networking: Theoretical and Practical Tasks</h1>
+  <div class="nav-buttons">
+    <button class="nav-button" onclick="scrollToSection('theory')">Theoretical Part</button>
+    <button class="nav-button" onclick="scrollToSection('practical')">Practical Part</button>
+      <button class="nav-button" onclick="window.location.href='http://studife.it.p.lodz.pl/~ife24_23/'">
+          Back to Home
+      </button>
+  </div>
+
+  <div id="theory" class="content-section">
+    <h2>Theoretical Part</h2>
+    <h3>TCP Protocol</h3>
+      <div class="step">
+    <p>The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network.</p>
+      </div>
+    <h3>UDP Protocol</h3>
+    <div class="step">
+    <p>UDP (User Datagram Protocol) is a data transmission protocol used to send messages between computers over a network. Unlike TCP, UDP does not establish a connection between the sender and receiver before transmitting data. It simply sends packets (datagrams) without any prior negotiation, making it simpler but also less reliable. UDP is faster than TCP because it doesn’t require connection establishment or delivery/order checks. This makes it ideal for applications where speed is important, and loss of some data is acceptable.
+      Examples: video and audio streaming, online gaming, VoIP (Voice over IP).
+    </p>
+      </div>
+    <h3>TCP Protocol Parameters</h3>
+      <div class="step">
+        <p>TCP parameters include sequence number, acknowledgment number, data offset, reserved, control bits (flags), window size, checksum, urgent pointer, options, and padding. These parameters help in establishing a reliable connection and ensuring data integrity during transmission.
+        </p>
+        <img src="./image/TCPprotocol.jpg" class="screenshot" alt="TCP Protocol Parameters"></img>
+        <ul>
+          <li>Source Port Field (16 bits): The Source Port field denotes the port number of the sending device.</li>
+          <li>Destination Port Field (16 bits): The Destination Port field signifies the port number on the receiving device.</li>
+          <li>Sequence Number Field (32 bits): This field indicates the total number of bytes sent to the receiver. It is instrumental for the receiver to reconstruct data correctly.</li>
+          <li>Acknowledgment Number Field (32 bits): The Acknowledgment Number field contains the sequence number that the receiving device expects to receive next.</li>
+          <li>Data Offset Field (4 bits): Indicates the starting point of the TCP data payload.</li>
+          <li>Reserved Field (3 bits): Reserved for future use.</li>
+          <li>Flags Field (9 bits): Includes control flags such as SYN, ACK, FIN.</li>
+          <li>Window Field (16 bits): Governs the flow control by specifying the window size.</li>
+          <li>Checksum Field (16 bits): Provides error-checking for the header and data.</li>
+          <li>Urgent Pointer Field (16 bits): Specifies the location of urgent data.</li>
+          <li>Options Field (0-320 bits): Accommodates various optional parameters and settings.</li>
+          <li>Data Field: Contains the actual payload or data being transmitted.</li>
+        </ul>
+      </div>
+    <h3>UDP Protocol Parameters</h3>
+      <div class="step">
+        <p>UDP has fewer protocol parameters than TCP, including source port, destination port, length, and checksum. These parameters help in identifying the source and destination of the data and ensuring data integrity to some extent.</p>
+
+        <img src="./image/UDPprotocol.png" class="screenshot" alt="UDP Protocol Parameters"></img>
+        <ul>
+      <li>Source Port: Identifies the sender's port number.</li>
+      <li>Destination Port: Specifies the recipient's port number.</li>
+      <li>Length: Total length of the UDP datagram.</li>
+      <li>Checksum: Provides some error-checking for the header and data.</li>
+    </ul>
+      </div>
+
+    <h3>TCP Connection</h3>
+      <div class="step">
+    <p>A TCP connection is established through a process called a three-way handshake. This process involves the exchange of SYN and ACK packets between the client and server to establish a connection before data transmission can occur.</p>
+      </div>
+   <h3>Three-Way Handshake</h3>
+    <div class="step">
+    <ol>
+      <li>SYN: Client sends a synchronization request.</li>
+      <li>SYN-ACK: Server acknowledges the request and sends its own synchronization.</li>
+      <li>ACK: Client acknowledges the server's synchronization.</li>
+    </ol>
+      </div>
+
+    <h3>Connection Establishment</h3>
+      <div class="step">
+    <p>The three-way handshake ensures both parties are ready for communication and establishes parameters for data transfer.</p>
+      </div>
+    <h3>Connection Release</h3>
+      <div class="step">
+    <p>Connection release in TCP is done through a process called the four-way handshake, which involves the exchange of FIN and ACK packets between the client and server to gracefully close the connection.</p>
+        <ul>
+          <li>FIN (Finish): Initiator signals the intent to close the connection.</li>
+          <li>ACK (Acknowledge): The receiver acknowledges the request to close the connection.</li>
+          <li>FIN (Finish) The receiver signals its own intent to close the connection.</li>
+          <li>ACK (Acknowledge): The initiator acknowledges the receiver's request, and the connection is fully closed.</li>
+        </ul>
+      </div>
+    <h3>Ports</h3>
+      <div class="step">
+    <p>Ports are numerical identifiers used by protocols to direct data to the correct application.</p>
+        <p>Port numbers are 16-bit values, which means they range from 0 to 65,535. They are divided into three categories:</p>
+        <ul>
+          <li>Well-Known Ports (0-1023): These are reserved for common protocols and services (e.g., HTTP uses port 80, FTP uses port 21)</li>
+          <li>Registered Ports (1024-49151): These are used by user applications and services that are not standardized but are registered for specific purposes (e.g., MySQL uses port 3306).</li>
+          <li>Dynamic or Private Ports (49152-65535): These are used for ephemeral connections or temporary ports, typically assigned by the operating system when a client application requests a connection (e.g., a temporary port for a web browser to connect to a server).</li>
+
+        </ul>
+      <p>Common ports include:</p>
+    <ul>
+      <li>80 (HTTP)</li>
+      <li>443 (HTTPS)</li>
+      <li>21 (FTP)</li>
+      <li>22 (SSH)</li>
+      <li>53 (DNS)</li>
+    </ul>
+      </div>
+  </div>
+
+  <div id="practical" class="content-section">
+    <h2>Practical Part</h2>
+
+    <h3>2.1.1 Accessing www.google.com</h3>
+      <div class="step">
+    <ul>
+      <li>Open a browser and access <strong>www.google.com</strong>.</li>
+      <li>Use <code>netstat</code> to identify the local and remote port numbers.</li>
+      <li>Run Wireshark to capture packets and verify port usage.</li>
+      <li>Close the browser and check the local port status using <code>netstat</code>.</li>
+        <img src="./image/WIresharkGoogle.png" class="screenshot" alt ="2.1.1 Accessing www.google.com"></img>
+        <img src="./image/netstatGoogle.png" class="screenshot" alt ="2.1.1 Accessing www.google.com"></img>
+    </ul>
+      </div>
+    <h3>2.1.2 FTP File Transfer</h3>
+      <div class="step">
+    <ul>
+      <li>Use an FTP client to upload a file to <strong>studife.it.p.lodz.pl</strong>.</li>
+      <li>Identify the ports used for data transmission using <code>netstat</code> and Wireshark.</li>
+      <li>Close the FTP connection and check the local port status.</li>
+        <img src="./image/WiresharkFTP.png" class="screenshot" alt = "2.1.2 FTP File Transfer"></img>
+        <img src="./image/netstatFTP.png" class="screenshot" alt = "2.1.2 FTP File Transfer"></img>
+    </ul>
+      </div>
+    <h3>2.1.3 SFTP/SCP File Transfer</h3>
+      <div class="step">
+    <ul>
+      <li>Use an SFTP/SCP client to upload a file to <strong>studife.it.p.lodz.pl</strong>.</li>
+      <li>Identify the ports used for data transmission using <code>netstat</code> and Wireshark.</li>
+      <li>Close the connection and check the local port status.</li>
+        <img src="./image/WiresharkSFTP.png" class="screenshot" alt = "2.1.3 SFTP/SCP File Transfer"></img>
+        <img src="./image/netstatSFTP.png" class="screenshot"  alt = "2.1.3 SFTP/SCP File Transfer"></img>
+    </ul>
+      </div>
+    <h3>2.1.4 DNS Protocol</h3>
+      <div class="step">
+    <ul>
+      <li>Run Wireshark and capture DNS-related traffic.</li>
+      <li>Analyze the transport layer protocol and port used by DNS (typically UDP on port 53).</li>
+        <img src="./image/DNS.png" class="screenshot" alt = "2.1.4 DNS Protocol"></img>
+    </ul>
+      </div>
+  </div>
+</div>
+
+<script>
+  function scrollToSection(sectionId) {
+    document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
